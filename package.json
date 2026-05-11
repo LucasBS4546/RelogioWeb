@@ -1,0 +1,36 @@
+{
+  "name": "relogio-web",
+  "version": "1.0.0",
+  "description": "Aplicativo web desktop de relógio com alarmes, hora mundial, temporizador e cronômetro",
+  "main": "index.html",
+  "scripts": {
+    "start": "Abra o index.html em um navegador",
+    "dev": "Use um servidor local (ex: npx http-server)",
+    "test": "Teste manualmente no navegador"
+  },
+  "keywords": [
+    "relógio",
+    "clock",
+    "alarme",
+    "alarm",
+    "temporizador",
+    "timer",
+    "cronômetro",
+    "stopwatch",
+    "web",
+    "desktop",
+    "aplicativo"
+  ],
+  "author": "Seu Nome",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/RelogioWeb"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "notes": "Este é um aplicativo vanilla JavaScript puro, sem dependências externas. Pode ser servido por qualquer servidor web ou aberto diretamente como arquivo local."
+}

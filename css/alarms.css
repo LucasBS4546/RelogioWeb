@@ -1,0 +1,161 @@
+/* ESTILOS ESPECÍFICOS PARA ALARMES */
+
+.alarms-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.create-alarm-form {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.create-alarm-form h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.create-alarm-form .form-group {
+    margin-bottom: 12px;
+}
+
+.create-alarm-form .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.alarms-list {
+    margin-bottom: 30px;
+}
+
+.alarms-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.alarm-item {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.alarm-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-color: #3498db;
+}
+
+.alarm-item.active {
+    border-color: #27ae60;
+    background: #f0fdf4;
+}
+
+.alarm-item.inactive {
+    opacity: 0.7;
+    border-color: #e74c3c;
+    background: #fef2f2;
+}
+
+.alarm-time {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 10px;
+}
+
+.alarm-label {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+.alarm-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.alarm-status.active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alarm-status.inactive {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.alarm-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.alarm-btn {
+    flex: 1;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 90px;
+}
+
+.alarm-btn-toggle {
+    background: #3498db;
+    color: white;
+}
+
+.alarm-btn-toggle:hover {
+    background: #2980b9;
+}
+
+.alarm-btn-delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.alarm-btn-delete:hover {
+    background: #c0392b;
+}
+
+.test-alarm-section {
+    text-align: center;
+    padding: 20px;
+    background: #ffeaa7;
+    border-radius: 10px;
+    border: 2px dashed #f39c12;
+}
+
+.test-alarm-section .btn {
+    width: 100%;
+    max-width: 300px;
+}
+
+@media (max-width: 768px) {
+    .alarms-items {
+        grid-template-columns: 1fr;
+    }
+
+    .alarm-actions {
+        flex-direction: column;
+    }
+
+    .alarm-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Web - Desktop App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/alarms.css">
+    <link rel="stylesheet" href="css/world-time.css">
+    <link rel="stylesheet" href="css/timer.css">
+    <link rel="stylesheet" href="css/stopwatch.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header com relógio principal -->
+        <header class="header">
+            <h1>Relógio Web</h1>
+            <div class="current-time" id="currentTime">00:00:00</div>
+        </header>
+
+        <!-- Navegação por abas -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="alarms">Alarmes</button>
+            <button class="tab-btn" data-tab="world-time">Hora Mundial</button>
+            <button class="tab-btn" data-tab="timer">Temporizador</button>
+            <button class="tab-btn" data-tab="stopwatch">Cronômetro</button>
+        </nav>
+
+        <!-- Conteúdo das abas -->
+        <main class="tab-content">
+            <!-- ABA 1: ALARMES -->
+            <section id="alarms" class="tab-pane active">
+                <div class="alarms-container">
+                    <h2>Gerenciador de Alarmes</h2>
+                    
+                    <!-- Formulário para criar alarme -->
+                    <div class="create-alarm-form">
+                        <h3>Novo Alarme</h3>
+                        <div class="form-group">
+                            <label for="alarmTime">Horário do Alarme:</label>
+                            <input type="time" id="alarmTime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="alarmLabel">Rótulo (opcional):</label>
+                            <input type="text" id="alarmLabel" placeholder="Ex: Acordar, Reunião, etc">
+                        </div>
+                        <div class="form-group">
+                            <label for="alarmAudio">Arquivo de Áudio (opcional):</label>
+                            <input type="text" id="alarmAudio" placeholder="Deixe vazio para usar som padrão">
+                        </div>
+                        <button id="createAlarmBtn" class="btn btn-primary">Criar Alarme</button>
+                    </div>
+
+                    <!-- Lista de alarmes -->
+                    <div class="alarms-list">
+                        <h3>Meus Alarmes</h3>
+                        <div id="alarmsList" class="alarms-items">
+                            <p class="empty-message">Nenhum alarme criado ainda</p>
+                        </div>
+                    </div>
+
+                    <!-- Botão de teste -->
+                    <div class="test-alarm-section">
+                        <button id="testAlarmBtn" class="btn btn-warning">Testar Alarme</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABA 2: WORLD TIME -->
+            <section id="world-time" class="tab-pane">
+                <div class="world-time-container">
+                    <h2>Hora Mundial</h2>
+                    <p class="world-time-description">Veja o horário atual em todos os fusos horários principais</p>
+                    <div id="timezonesGrid" class="timezones-grid">
+                        <!-- Preenchido dinamicamente -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABA 3: TEMPORIZADOR -->
+            <section id="timer" class="tab-pane">
+                <div class="timer-container">
+                    <h2>Temporizador</h2>
+                    
+                    <div class="timer-display">
+                        <div id="timerValue" class="timer-value">00:00:00</div>
+                    </div>
+
+                    <div class="timer-input">
+                        <h3>Defina um tempo:</h3>
+                        <div class="input-group">
+                            <label for="timerHours">Horas:</label>
+                            <input type="number" id="timerHours" min="0" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="timerMinutes">Minutos:</label>
+                            <input type="number" id="timerMinutes" min="0" max="59" value="1">
+                        </div>
+                        <div class="input-group">
+                            <label for="timerSeconds">Segundos:</label>
+                            <input type="number" id="timerSeconds" min="0" max="59" value="0">
+                        </div>
+                    </div>
+
+                    <div class="timer-controls">
+                        <button id="timerStartBtn" class="btn btn-primary">Iniciar</button>
+                        <button id="timerPauseBtn" class="btn btn-warning" disabled>Pausar</button>
+                        <button id="timerResetBtn" class="btn btn-secondary">Reiniciar</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABA 4: CRONÔMETRO -->
+            <section id="stopwatch" class="tab-pane">
+                <div class="stopwatch-container">
+                    <h2>Cronômetro</h2>
+                    
+                    <div class="stopwatch-display">
+                        <div id="stopwatchValue" class="stopwatch-value">00:00:00</div>
+                    </div>
+
+                    <div class="stopwatch-controls">
+                        <button id="stopwatchStartBtn" class="btn btn-primary">Iniciar</button>
+                        <button id="stopwatchPauseBtn" class="btn btn-warning" disabled>Pausar</button>
+                        <button id="stopwatchResetBtn" class="btn btn-secondary">Reiniciar</button>
+                    </div>
+
+                    <div class="stopwatch-laps">
+                        <h3>Voltas Registradas</h3>
+                        <div id="lapsList" class="laps-items">
+                            <p class="empty-message">Nenhuma volta registrada</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para notificações -->
+    <div id="notificationModal" class="notification-modal" style="display: none;">
+        <div class="notification-content">
+            <p id="notificationText"></p>
+            <button class="btn btn-primary" onclick="closeNotification()">OK</button>
+        </div>
+    </div>
+
+    <!-- Script de áudio (será preenchido dinamicamente) -->
+    <audio id="alarmAudio" preload="auto" crossorigin="anonymous"></audio>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/alarms.js"></script>
+    <script src="js/world-time.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/stopwatch.js"></script>
+</body>
+</html>

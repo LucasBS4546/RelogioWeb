@@ -1,0 +1,142 @@
+/* ESTILOS PARA TEMPORIZADOR */
+
+.timer-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timer-display {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 50px 20px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.timer-value {
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    word-spacing: 10px;
+}
+
+.timer-input {
+    background: #f5f7fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.timer-input h3 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+}
+
+/* Spinner alternativos (remover setas padrão em números) */
+.input-group input::-webkit-outer-spin-button,
+.input-group input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-group input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-controls .btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 15px 20px;
+    font-size: 1rem;
+}
+
+.timer-is-running {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 10px 40px rgba(230, 126, 34, 0.4);
+    }
+}
+
+.timer-finished {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@media (max-width: 768px) {
+    .timer-display {
+        padding: 40px 15px;
+    }
+
+    .timer-value {
+        font-size: 3rem;
+        letter-spacing: 2px;
+    }
+
+    .input-group {
+        grid-template-columns: 1fr;
+    }
+
+    .timer-controls {
+        flex-direction: column;
+    }
+
+    .timer-controls .btn {
+        width: 100%;
+    }
+}

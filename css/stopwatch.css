@@ -1,0 +1,152 @@
+/* ESTILOS PARA CRONÔMETRO */
+
+.stopwatch-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stopwatch-display {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 50px 20px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.stopwatch-value {
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    word-spacing: 10px;
+}
+
+.stopwatch-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.stopwatch-controls .btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 15px 20px;
+    font-size: 1rem;
+}
+
+.stopwatch-laps {
+    background: #f5f7fa;
+    padding: 25px;
+    border-radius: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.stopwatch-laps h3 {
+    margin-top: 0;
+}
+
+.laps-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+}
+
+.lap-item {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.lap-item:hover {
+    border-color: #3498db;
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.1);
+}
+
+.lap-number {
+    font-weight: 600;
+    color: #7f8c8d;
+    min-width: 60px;
+}
+
+.lap-time {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    color: #2c3e50;
+    text-align: right;
+}
+
+.stopwatch-is-running {
+    animation: pulse-glow-stop 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-stop {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 10px 40px rgba(245, 87, 108, 0.4);
+    }
+}
+
+@media (max-width: 768px) {
+    .stopwatch-display {
+        padding: 40px 15px;
+    }
+
+    .stopwatch-value {
+        font-size: 3rem;
+        letter-spacing: 2px;
+    }
+
+    .stopwatch-controls {
+        flex-direction: column;
+    }
+
+    .stopwatch-controls .btn {
+        width: 100%;
+    }
+
+    .laps-items {
+        grid-template-columns: 1fr;
+    }
+
+    .lap-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .lap-time {
+        margin-top: 10px;
+    }
+}
+
+/* Scrollbar customizado */
+.stopwatch-laps::-webkit-scrollbar {
+    width: 8px;
+}
+
+.stopwatch-laps::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+.stopwatch-laps::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 10px;
+}
+
+.stopwatch-laps::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
